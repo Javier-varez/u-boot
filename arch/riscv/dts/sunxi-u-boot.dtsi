@@ -66,6 +66,14 @@
 	uart3-pb-pins {
 		bootph-all;
 	};
+
+	uart1-pg6-pins {
+		bootph-all;
+	};
+
+	uart1-pg8-rts-cts-pins {
+		bootph-all;
+	};
 };
 
 &rtc {
@@ -73,6 +81,10 @@
 };
 
 &uart0 {
+	bootph-all;
+};
+
+&uart1 {
 	bootph-all;
 };
 
