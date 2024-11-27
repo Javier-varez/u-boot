@@ -126,11 +126,11 @@
  */
 #define BOOTM_SIZE        __stringify(0xa000000)
 #define KERNEL_ADDR_R     __stringify(SDRAM_OFFSET(2000000))
-#define FDT_ADDR_R        __stringify(SDRAM_OFFSET(3000000))
-#define SCRIPT_ADDR_R     __stringify(SDRAM_OFFSET(3100000))
-#define PXEFILE_ADDR_R    __stringify(SDRAM_OFFSET(3200000))
-#define FDTOVERLAY_ADDR_R __stringify(SDRAM_OFFSET(3300000))
-#define RAMDISK_ADDR_R    __stringify(SDRAM_OFFSET(3400000))
+#define FDT_ADDR_R        __stringify(SDRAM_OFFSET(4000000))
+#define SCRIPT_ADDR_R     __stringify(SDRAM_OFFSET(4100000))
+#define PXEFILE_ADDR_R    __stringify(SDRAM_OFFSET(4200000))
+#define FDTOVERLAY_ADDR_R __stringify(SDRAM_OFFSET(4300000))
+#define RAMDISK_ADDR_R    __stringify(SDRAM_OFFSET(4400000))
 
 #elif (CONFIG_SUNXI_MINIMUM_DRAM_MB >= 64)
 /*
