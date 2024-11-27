@@ -104,7 +104,7 @@ config SUNXI_GEN_NCAT2
 	  clocks and memory map.
 
 config SUNXI_MINIMUM_DRAM_MB
-	int
+	int "Minimum amount of DRAM in the board"
 	default 32 if MACH_SUNIV
 	default 64 if MACH_SUN8I_V3S || TARGET_SUN20I_D1
 	default 256
