@@ -191,6 +191,8 @@
 	"fdt ram " FDT_ADDR_R " 0x100000;" \
 	"ramdisk ram " RAMDISK_ADDR_R " 0x4000000\0"
 
+#ifndef CONFIG_BOOTSTD_DEFAULTS
+
 #ifdef CONFIG_MMC
 #if CONFIG_MMC_SUNXI_SLOT_EXTRA != -1
 #define BOOTENV_DEV_MMC_AUTO(devtypeu, devtypel, instance)		\
@@ -276,6 +278,8 @@
 
 #include <config_distro_bootcmd.h>
 
+#endif  // CONFIG_BOOTSTD_DEFAULTS
+
 #ifdef CONFIG_USB_KEYBOARD
 #define CONSOLE_STDIN_SETTINGS \
 	"stdin=serial,usbkbd\0"
@@ -318,6 +322,24 @@
 #define FDTFILE CONFIG_DEFAULT_DEVICE_TREE ".dtb"
 #endif
 
+#ifdef CONFIG_BOOTSTD_DEFAULTS
+
+#define BOOT_TARGETS "mmc usb pxe dhcp"
+
+#define CFG_EXTRA_ENV_SETTINGS \
+	CONSOLE_ENV_SETTINGS \
+	MEM_LAYOUT_ENV_SETTINGS \
+	MEM_LAYOUT_ENV_EXTRA_SETTINGS \
+	DFU_ALT_INFO_RAM \
+	"fdtfile=" FDTFILE "\0" \
+	"console=ttyS0,115200\0" \
+	"uuid_gpt_esp=" UUID_GPT_ESP "\0" \
+	"uuid_gpt_system=" UUID_GPT_SYSTEM "\0" \
+	"partitions=" PARTS_DEFAULT "\0" \
+	"boot_targets=" BOOT_TARGETS "\0"
+
+#else  // CONFIG_BOOTSTD_DEFAULTS
+
 #define CFG_EXTRA_ENV_SETTINGS \
 	CONSOLE_ENV_SETTINGS \
 	MEM_LAYOUT_ENV_SETTINGS \
@@ -330,5 +352,7 @@
 	"partitions=" PARTS_DEFAULT "\0" \
 	BOOTCMD_SUNXI_COMPAT \
 	BOOTENV
+
+#endif  // CONFIG_BOOTSTD_DEFAULTS
 
 #endif /* _SUNXI_COMMON_CONFIG_H */
